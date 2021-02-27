@@ -1,5 +1,5 @@
 {
-  "name": "json-transform",
+  "name": "stdin2json",
   "version": "1.0.0",
   "description": "Command-line tool for converting anything to JSON 🧀",
   "repository": "sambacha/eat",
