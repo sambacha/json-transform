@@ -1,9 +1,9 @@
 #!/usr/bin/env node
-'use strict'
-const fs = require('fs')
-const meow = require('meow')
-const pretty = require('@medv/prettyjson')
-const stdin = require('get-stdin')
+"use strict";
+const fs = require("fs");
+const meow = require("meow");
+const pretty = require("@medv/prettyjson");
+const stdin = require("get-stdin");
 
 const cli = meow(`
   Usage
@@ -16,28 +16,28 @@ const cli = meow(`
 
     $ eat deps.toml
 
-`)
+`);
 
 async function main() {
-  const text = await stdin()
-  if (text === '' && cli.input.length === 0) {
-    cli.showHelp()
+  const text = await stdin();
+  if (text === "" && cli.input.length === 0) {
+    cli.showHelp();
   }
 
-  const apples = [...cli.input.map(file => fs.readFileSync(file).toString())]
-  if (text.replace(/\s+$/g, '') !== '') {
-    apples.unshift(text)
+  const apples = [...cli.input.map((file) => fs.readFileSync(file).toString())];
+  if (text.replace(/\s+$/g, "") !== "") {
+    apples.unshift(text);
   }
 
-  let oranges = apples.map(decode)
+  let oranges = apples.map(decode);
   if (oranges.length === 1) {
-    oranges = oranges[0]
+    oranges = oranges[0];
   }
 
   if (process.stdout.isTTY) {
-    console.log(pretty(oranges))
+    console.log(pretty(oranges));
   } else {
-    console.log(JSON.stringify(oranges, null, 2))
+    console.log(JSON.stringify(oranges, null, 2));
   }
 }
 
@@ -48,46 +48,53 @@ const decoders = [
   decodeTOML,
   decodeINI,
   decodeCLITable,
-]
+];
 
 function decodeJSON(text) {
-  return JSON.parse(text)
+  return JSON.parse(text);
 }
 
 function decodeXML(text) {
-  return require('xml-js').xml2js(text, {compact: true})
+  return require("xml-js").xml2js(text, { compact: true });
 }
 
 function decodeYAML(text) {
-  const obj = require('js-yaml').safeLoad(text)
-  if (typeof obj === 'string') {
-    throw new Error('👎')
+  const obj = require("js-yaml").safeLoad(text);
+  if (typeof obj === "string") {
+    throw new Error("👎");
   }
-  return obj
+  return obj;
 }
 
 function decodeTOML(text) {
-  return require('toml').parse(text)
+  return require("toml").parse(text);
 }
 
 function decodeINI(text) {
-  if (!/^\[.*\]$/.test(text)) throw 'not ini'
+  if (!/^\[.*\]$/.test(text)) throw "not ini";
 
-  return  require('ini').parse(text)
+  return require("ini").parse(text);
 }
 
 function decodeCLITable(text) {
-  const [header, ...data] = text.replace(/\n$/,'m').split('\n').map(x => x.split(/\s+/))
-  return data.map(line => line.reduce((a, v, i) => { if (v || header[i]) a[header[i]] = v; return a }, {}))
+  const [header, ...data] = text
+    .replace(/\n$/, "m")
+    .split("\n")
+    .map((x) => x.split(/\s+/));
+  return data.map((line) =>
+    line.reduce((a, v, i) => {
+      if (v || header[i]) a[header[i]] = v;
+      return a;
+    }, {})
+  );
 }
 
 function decode(text) {
   for (let decoder of decoders) {
     try {
-      return decoder(text)
-    } catch (e) {
-    }
+      return decoder(text);
+    } catch (e) {}
   }
 }
 
-main()
+main();

@@ -1,9 +1,8 @@
 {
-  "name": "@medv/eat",
+  "name": "json-transform",
   "version": "1.0.0",
   "description": "Command-line tool for converting anything to JSON 🧀",
-  "repository": "antonmedv/eat",
-  "author": "Anton Medvedev <anton@medv.io>",
+  "repository": "sambacha/eat",
   "license": "MIT",
   "bin": {
     "eat": "index.js"

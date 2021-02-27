@@ -1,14 +1,13 @@
-
 # [![Build Status](https://travis-ci.org/antonmedv/eat.svg?branch=master)](https://travis-ci.org/antonmedv/eat)
 
 Command-line tool for converting **anything** to JSON.
 
 ## Features
 
-* Eat everything, spits out json
-* Supports **json**, **yaml**, **toml**, **xml**, **ini**, **cli tables**
-* Formatting and highlighting
-* Standalone binary
+- Eat everything, spits out json
+- Supports **json**, **yaml**, **toml**, **xml**, **ini**, **cli tables**
+- Formatting and highlighting
+- Standalone binary
 
 ## Install
 
@@ -40,8 +39,8 @@ $ cat response.xml | eat | fx .Document.Title
 
 ## Related
 
-* [fx](https://github.com/antonmedv/fx) – cli JSON processor on JS
-* [any-json](https://github.com/any-json/any-json) - alternative cli tool for converting formats
+- [fx](https://github.com/antonmedv/fx) – cli JSON processor on JS
+- [any-json](https://github.com/any-json/any-json) - alternative cli tool for converting formats
 
 ## License
 
