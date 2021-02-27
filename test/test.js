@@ -50,6 +50,6 @@ test("ini", (t) => {
 });
 
 test("file", (t) => {
-  const r = eat("", [".travis.yml"]);
+  const r = eat("", ["./test_files/file.test.yml"]);
   t.is(JSON.parse(r).language, "node_js");
 });
