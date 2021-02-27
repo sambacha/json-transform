@@ -1,18 +1,17 @@
 {
   "name": "stdin2json",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Command-line tool for converting anything to JSON 🧀",
-  "repository": "sambacha/eat",
+  "repository": "sambacha/json-transform",
   "license": "MIT",
   "bin": {
-    "eat": "index.js"
+    "stdin2json": "index.js"
   },
   "files": [
     "index.js"
   ],
   "scripts": {
-    "test": "ava",
-    "release": "pkg . --out-path dist && release-it --github.release --github.assets=dist/*"
+    "test": "ava"
   },
   "keywords": [
     "json",
