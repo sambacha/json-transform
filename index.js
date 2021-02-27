@@ -7,14 +7,14 @@ const stdin = require("get-stdin");
 
 const cli = meow(`
   Usage
-    $ eat [file ...]
+    $ stdin2json [file ...]
 
   Examples
-    $ eat resp.xml > resp.json
+    $ stdin2json resp.xml > resp.json
 
-    $ cat config.yaml | eat > config.json
+    $ stdin2json config.yaml | eat > config.json
 
-    $ eat deps.toml
+    $ stdin2json deps.toml
 
 `);
 
