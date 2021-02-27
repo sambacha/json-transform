@@ -1,6 +1,6 @@
-# [![Build Status](https://travis-ci.org/antonmedv/eat.svg?branch=master)](https://travis-ci.org/antonmedv/eat)
+# stdin2json
 
-Command-line tool for converting **anything** to JSON.
+> Command-line tool for converting **anything** to JSON.
 
 ## Features
 
@@ -12,19 +12,18 @@ Command-line tool for converting **anything** to JSON.
 ## Install
 
 ```
-$ npm install -g @medv/eat
+$ npm install -g stdin2json
 ```
 
-Or download standalone binary from [releases](https://github.com/antonmedv/eat/releases) page.
 
 ## Usage
 
 ```
-$ eat resp.xml > resp.json
+$ stdin2json resp.xml > resp.json
 
-$ cat config.yaml | eat > config.json
+$ cat config.yaml | stdin2json > config.json
 
-$ eat deps.toml
+$ stdin2json deps.toml
 
 $ ps | eat | fx .PID
 ```
